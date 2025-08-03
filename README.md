@@ -5,19 +5,6 @@
 [![AWS](https://img.shields.io/badge/AWS-Deployed-orange)](https://aws.amazon.com/)
 [![Jenkins](https://img.shields.io/badge/Jenkins-Pipeline-red)](https://jenkins.io/)
 
-## 📋 Table of Contents
-- [Project Overview](#1-project-overview)
-- [Architecture](#2-architecture)
-- [Tools & Technologies](#3-tools--technologies-used)
-- [Prerequisites](#4-prerequisites)
-- [Step-by-Step Implementation](#5-step-by-step-implementation)
-- [Security Features](#6-security-features)
-- [Monitoring & Observability](#7-monitoring--observability)
-- [Challenges & Solutions](#8-challenges--solutions)
-- [Results & Metrics](#9-results--metrics)
-- [Future Enhancements](#10-future-enhancements)
-- [Contributing](#11-contributing)
-- [Screenshots](#screenshots)
 
 ## 1. Project Overview  
 
@@ -462,15 +449,6 @@ Priority 3 (Low):
 
 ---
 
-### 📞 Contact & Support
-- **Author**: Kevin Llano
-- **GitHub**: [@KevinLlano](https://github.com/KevinLlano)
-- **Project Link**: [DevSecOps-approach](https://github.com/KevinLlano/DevSecOps-approach)
-
-### 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## Screenshots 📸
 
