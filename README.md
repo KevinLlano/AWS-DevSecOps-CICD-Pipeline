@@ -94,8 +94,6 @@ Traditional development workflows often lack integrated security measures, leadi
 
 ## 3. Tools & Technologies Used 🛠  
 
-## 3. Tools & Technologies Used 🛠  
-
 ### 🔧 **Development & Version Control**
 - **Version Control:** Git, GitHub  
 - **Frontend Framework:** React.js, JavaScript ES6+
@@ -159,7 +157,6 @@ Your AWS user/role should have the following permissions:
 - Security Groups management
 - CloudWatch access for monitoring
 
-## 5. Step-by-Step Implementation 🚀  
 ## 5. Step-by-Step Implementation 🚀
 
 ### Phase 1: AWS Setup & Configuration 🏗
@@ -474,8 +471,6 @@ Priority 3 (Low):
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-## Screenshots 📸
 
 ## Screenshots 📸
 
