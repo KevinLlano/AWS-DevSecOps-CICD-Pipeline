@@ -486,6 +486,9 @@ python3 -m git_filter_repo --path JENKINS-TF/.terraform/providers/registry.terra
 ![Build Success Dashboard](Jenkinsbuild.png)
 *Successful pipeline execution with all security checks passed*
 
+![AWS EC2 Prometheus+Grafana](img_2.png)
+*Prometheus and Grafana dashboards running on the same EC2 instance as Jenkins for cost-effective monitoring*
+
 ### 🔒 Security Scanning Results
 ![OWASP Dependency Check](OwaspMonitoring.png)
 *OWASP dependency vulnerability scan results showing zero critical vulnerabilities*
@@ -498,4 +501,3 @@ python3 -m git_filter_repo --path JENKINS-TF/.terraform/providers/registry.terra
 *Successfully deployed Amazon clone application running on AWS EC2 with HTTPS*
 
 ---
-
