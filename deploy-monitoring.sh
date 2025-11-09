@@ -2,7 +2,7 @@
 # Deploy Prometheus & Grafana monitoring stack to EC2
 # Run this script from your local machine after EC2 is ready
 
-EC2_IP="54.152.119.19"
+EC2_IP="13.220.204.80"
 KEY_PATH="C:/Users/ke-bl/OneDrive/Documents/Pen KeyPairs/Texas (3).pem"
 PROJECT_DIR="C:/Projects/Cloud Projects/dev_sec_ops_1"
 

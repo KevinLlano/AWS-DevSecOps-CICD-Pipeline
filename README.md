@@ -280,6 +280,7 @@ docker run -d -p 3000:3000 amazon-clone-app
 | Security Hotspots | 0 | 0 |
 
 ## 7. Monitoring & Observability 📊
+![img.png](img.png)
 
 ### Monitoring Stack Integration (Prometheus, Grafana, CloudWatch)
 
@@ -370,6 +371,7 @@ python3 -m git_filter_repo --path JENKINS-TF/.terraform/providers/registry.terra
 - Simplified shell scripts (e.g., install_monitoring.sh) to reduce complexity and avoid redundant steps, ensuring smoother container startup and attachment.
 - Verified security group rules and Docker Compose network settings to allow proper communication between containers and EC2 services.
 - Ensured all monitoring containers (Prometheus, Grafana, Node Exporter) were started directly on the EC2 instance, not locally, for correct metrics collection and dashboard access.
+- Disabled Jenkins and SonarQube setup, keeping only the minimal monitoring stack for efficiency and cost savings to test Prometheus and Grafana.
 
 ### Lessons Learned & Best Practices
 
@@ -420,41 +422,24 @@ python3 -m git_filter_repo --path JENKINS-TF/.terraform/providers/registry.terra
 
 ## 10. Future Enhancements 🚀
 
-### Short-term Goals (Next 3 months)
+### Short-term Goals (Next 3 months) pick 1
 - [ ] **Kubernetes Migration**: Deploy application to Amazon EKS for better scalability
-- [ ] **Advanced Monitoring**: Implement Prometheus and Grafana for enhanced observability
+- [ ] **Advanced Monitoring**: Implement Prometheus and Grafana for enhanced observability (Completed)
 - [ ] **Security Hardening**: Add SAST tools like CodeQL and Snyk
 - [ ] **Performance Testing**: Integrate JMeter for automated load testing
 
-### Medium-term Goals (6 months)
+### Medium-term Goals (6 months) pick 1
 - [ ] **Multi-Environment Support**: Implement staging and production environment separation
 - [ ] **Database Integration**: Add RDS with automated backup and monitoring
 - [ ] **CDN Implementation**: CloudFront distribution for improved performance
 - [ ] **Advanced Security**: Implement AWS WAF and Shield for DDoS protection
 
-### Long-term Vision (1 year)
+### Long-term Vision (1 year) pick 1
 - [ ] **GitOps Implementation**: Migrate to ArgoCD for declarative deployments
 - [ ] **Service Mesh**: Implement Istio for microservices communication
 - [ ] **AI/ML Integration**: Add predictive analytics for performance optimization
 - [ ] **Compliance Automation**: Implement automated compliance reporting (SOC2, ISO27001)
 
-### Technical Debt & Optimizations
-```
-Priority 1 (High):
-- Implement blue-green deployment strategy
-- Add automated rollback mechanisms
-- Enhance error handling and logging
-
-Priority 2 (Medium):
-- Optimize Docker image size (currently 1.2GB → target 400MB)
-- Implement caching strategies for faster builds
-- Add comprehensive integration tests
-
-Priority 3 (Low):
-- Migrate from Jenkins to GitHub Actions
-- Implement chaos engineering practices
-- Add performance profiling tools
-```
 
 ## 11. Contributing 🤝
 
