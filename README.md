@@ -281,22 +281,45 @@ docker run -d -p 3000:3000 amazon-clone-app
 
 ## 7. Monitoring & Observability 📊
 
-### CloudWatch Integration
-- **Application Logs**: Centralized logging for debugging and audit trails
-- **Performance Metrics**: CPU, memory, and network utilization monitoring
-- **Custom Metrics**: Application-specific performance indicators
-- **Alerting**: Automated notifications for threshold breaches
+### Monitoring Stack Integration (Prometheus, Grafana, CloudWatch)
 
-### Monitoring Dashboard
+#### What Was Added & Configured
+- **Prometheus**: Deployed via Docker Compose for metrics collection from Jenkins EC2 and Node Exporter.
+- **Grafana**: Deployed via Docker Compose for dashboard visualization of Prometheus metrics.
+- **Node Exporter**: Added for EC2 system metrics (CPU, memory, disk) to be scraped by Prometheus.
+- **CloudWatch**: Retained for AWS-level monitoring (logs, alarms, EC2 metrics).
+- **Security Group**: Opened ports 9090 (Prometheus), 3001 (Grafana), 9100 (Node Exporter) for external access.
+- **Cost Optimization**: All monitoring runs on the same budget-friendly EC2 instance as Jenkins, avoiding extra AWS charges.
+- **Terraform**: No breaking changes; infrastructure remains simple and cost-efficient.
+- **Docker Compose**: Used for easy local/EC2 deployment of monitoring stack.
+
+#### Workflow Diagram
 ```
-Key Metrics Tracked:
-- Application uptime (99.9% target)
-- Response time (<2s average)
-- Error rate (<1%)
-- Security scan results
-- Build success rate (>95%)
+┌───────────────┐      ┌───────────────┐      ┌───────────────┐
+│   EC2 (Jenkins│─────▶│ Node Exporter │─────▶│ Prometheus    │
+│   + Docker)   │      └───────────────┘      └───────────────┘
+      │                                        │
+      │                                        ▼
+      │                                 ┌───────────────┐
+      │                                 │   Grafana     │
+      │                                 └───────────────┘
+      │                                        │
+      ▼                                        ▼
+┌───────────────┐                      ┌───────────────┐
+│ AWS CloudWatch│◀─────────────────────│   EC2 Metrics │
+└───────────────┘                      └───────────────┘
 ```
 
+#### How to Access
+- **Prometheus**: `http://<EC2-PUBLIC-IP>:9090`
+- **Grafana**: `http://<EC2-PUBLIC-IP>:3001`
+- **CloudWatch**: AWS Console > CloudWatch
+
+#### Key Benefits
+- Unified monitoring for Jenkins, EC2, and app metrics
+- No additional AWS cost (single EC2 instance)
+- Easy setup, no breaking changes to existing pipeline
+- Visual dashboards and alerting via Grafana and CloudWatch
 
 ## 8. Challenges & Solutions 🛠️
 
@@ -338,6 +361,15 @@ python3 -m git_filter_repo --path JENKINS-TF/.terraform/providers/registry.terra
 - Created comprehensive documentation with code examples
 - Implemented pipeline syntax validation
 - Added debugging steps for troubleshooting
+
+#### 🖥️ **Challenge 6: EC2 Instance Size & Docker Compose Connectivity**
+**Problem**: The initial EC2 instance (t2.small) had insufficient resources, causing Jenkins and monitoring containers to fail or become unresponsive. Additionally, local Docker Compose deployments could not attach to the EC2 instance, resulting in connectivity issues and failed monitoring setup.
+**Solution**:
+- Evaluated and resized the EC2 instance to better match resource requirements, ensuring Jenkins and monitoring stack could run reliably.
+- Destroyed and reprovisioned infrastructure using Terraform to clear out resource conflicts and stale state.
+- Simplified shell scripts (e.g., install_monitoring.sh) to reduce complexity and avoid redundant steps, ensuring smoother container startup and attachment.
+- Verified security group rules and Docker Compose network settings to allow proper communication between containers and EC2 services.
+- Ensured all monitoring containers (Prometheus, Grafana, Node Exporter) were started directly on the EC2 instance, not locally, for correct metrics collection and dashboard access.
 
 ### Lessons Learned & Best Practices
 
@@ -481,3 +513,4 @@ Priority 3 (Low):
 *Successfully deployed Amazon clone application running on AWS EC2 with HTTPS*
 
 ---
+
